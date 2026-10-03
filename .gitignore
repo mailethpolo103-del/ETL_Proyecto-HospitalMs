@@ -1,0 +1,10 @@
+# Excluir carpeta de datos masivos y base de datos local
+data/
+*.db
+*.sqlite
+
+# Entorno virtual y archivos de cache de Python
+venv/
+.venv/
+__pycache__/
+*.pyc

@@ -19,7 +19,7 @@ Load: Carga de la información procesada en una base de datos SQLite.
 El objetivo principal es convertir datos provenientes de una fuente externa en información estructurada, limpia y preparada para su almacenamiento y posterior análisis.
 
 
-## Fuente de Datos
+Fuente de Datos
 
 El conjunto de datos utilizado en el proyecto corresponde a:
 
@@ -34,7 +34,7 @@ Dataset utilizado:
 El conjunto de datos contiene información relacionada con diferentes procesos de gestión hospitalaria.
 
 
-## Entidades Procesadas
+Entidades Procesadas
 
 El pipeline trabaja con cinco conjuntos de datos principales:
 
@@ -49,64 +49,28 @@ El pipeline trabaja con cinco conjuntos de datos principales:
 
 Estas entidades permiten representar diferentes aspectos del funcionamiento de una institución hospitalaria.
 
-### Patients
+Patients
 
 Contiene la información correspondiente a los pacientes registrados en el sistema.
 
-### Doctors
+ Doctors
 
 Contiene información relacionada con los médicos disponibles en la institución.
 
-### Appointments
+ Appointments
 
 Registra las citas médicas realizadas entre pacientes y médicos.
 
-### Treatments
+Treatments
 
 Contiene información sobre los tratamientos asociados a los pacientes.
 
-### Billing
+ Billing
 
 Registra la información relacionada con los procesos de facturación.
 
 
-## Arquitectura del Pipeline ETL
-
-El proyecto sigue el flujo tradicional de un proceso ETL:
-
-text
-                  ┌───────────────────┐
-                  │      Kaggle       │
-                  │  Fuente de datos  │
-                  └─────────┬─────────┘
-                            │
-                            ▼
-                  ┌───────────────────┐
-                  │     EXTRACT      │
-                  │   extract.py     │
-                  └─────────┬─────────┘
-                            │
-                            ▼
-                  ┌───────────────────┐
-                  │    TRANSFORM     │
-                  │   transform.py   │
-                  └─────────┬─────────┘
-                            │
-                            ▼
-                  ┌───────────────────┐
-                  │       LOAD       │
-                  │     load.py      │
-                  └─────────┬─────────┘
-                            │
-                            ▼
-                  ┌───────────────────┐
-                  │      SQLite      │
-                  │   hospital.db    │
-                  └───────────────────┘
-```
-
-
-## Estructura del Repositorio
+ Estructura del Repositorio
 
 ETL_Proyecto-HospitalMs/
 │
@@ -152,9 +116,9 @@ También es necesario contar con acceso a Internet para obtener el dataset desde
 
 
 
-## Instalación
+Instalación
 
-### 1. Clonar el repositorio
+ 1. Clonar el repositorio
 
 
 git clone https://github.com/mailethpolo103-del/ETL_Proyecto-HospitalMs.git
@@ -166,7 +130,7 @@ Ingresar a la carpeta:
 cd ETL_Proyecto-HospitalMs
 
 
-### 2. Crear un entorno virtual
+2. Crear un entorno virtual
 
 Se recomienda utilizar un entorno virtual para mantener aisladas las dependencias del proyecto.
 
@@ -182,7 +146,7 @@ Activar el entorno:
 
 
 
-### 3. Instalar las dependencias
+ 3. Instalar las dependencias
 
 Ejecutar:
 
@@ -190,7 +154,7 @@ Ejecutar:
 pip install -r requirements.txt
 
 
-## Ejecución del Pipeline
+ Ejecución del Pipeline
 
 El proceso completo se ejecuta desde el archivo `main.py`.
 
@@ -212,7 +176,7 @@ Al finalizar, los datos procesados quedan almacenados en una base de datos SQLit
 
 
 
-# Etapa 1: Extract
+Etapa 1: Extract
 
 La primera etapa corresponde a la extracción de datos.
 
@@ -240,7 +204,7 @@ Durante esta etapa se identifican y cargan las diferentes tablas que hacen parte
 Los datos extraídos son enviados posteriormente a la etapa de transformación.
 
 
-# Etapa 2: Transform
+ Etapa 2: Transform
 
 La segunda etapa corresponde a la transformación y limpieza de los datos.
 
@@ -251,7 +215,7 @@ src/transform.py
 
 Durante el proceso se realizan diferentes operaciones de preparación de los datos.
 
-### Limpieza de datos
+ Limpieza de datos
 
 Se realizan procesos orientados a mejorar la calidad de la información, incluyendo:
 
@@ -266,29 +230,29 @@ Se realizan procesos orientados a mejorar la calidad de la información, incluye
 El objetivo de esta etapa es garantizar que los datos que llegan a la base de datos tengan una estructura consistente.
 
 
-## Control de Calidad de los Datos
+ Control de Calidad de los Datos
 
 Como parte de la transformación se realiza una revisión de la calidad de los datos.
 
 Entre los aspectos revisados se encuentran:
 
-### Valores nulos
+Valores nulos
 
 Se verifica la existencia de valores faltantes dentro de las diferentes tablas.
 
 Después del proceso de transformación y carga realizado por el proyecto, las tablas procesadas no presentan valores nulos.
 
-### Registros duplicados
+ Registros duplicados
 
 Se realiza una revisión de registros repetidos para evitar almacenar información duplicada.
 
-### Limpieza de texto
+ Limpieza de texto
 
 Los campos de texto son procesados para eliminar inconsistencias como espacios innecesarios y mejorar la uniformidad de la información.
 
 
 
-# Etapa 3: Load
+ Etapa 3: Load
 
 La tercera etapa corresponde a la carga de los datos transformados.
 
@@ -313,7 +277,7 @@ treatments
 billing
 
 
-## Base de Datos
+ Base de Datos
 
 El proyecto utiliza:
 
@@ -324,7 +288,7 @@ La elección de SQLite permite disponer de una base de datos relacional ligera, 
 La base de datos generada permite posteriormente realizar consultas y análisis sobre la información hospitalaria.
 
 
-## Idempotencia
+ Idempotencia
 
 El pipeline está diseñado para que la carga de los datos pueda repetirse sin generar acumulaciones innecesarias de información.
 
@@ -339,7 +303,7 @@ python main.py
 sin generar duplicaciones progresivas en la base de datos.
 
 
-## Resultados del Proceso
+ Resultados del Proceso
 
 Después de ejecutar el pipeline se obtiene la siguiente distribución de información:
 
@@ -355,7 +319,7 @@ Después de ejecutar el pipeline se obtiene la siguiente distribución de inform
 El resultado final corresponde a una base de datos SQLite estructurada y preparada para consultas y análisis posteriores.
 
 
-## Tecnologías Utilizadas
+ Tecnologías Utilizadas
 
 El proyecto fue desarrollado utilizando las siguientes tecnologías:
 
@@ -369,7 +333,7 @@ GitHub
 Visual Studio Code
 
 
-## Flujo General del Proyecto
+Flujo General del Proyecto
 
 El proceso completo puede resumirse de la siguiente manera:
 
@@ -408,7 +372,7 @@ El proceso completo puede resumirse de la siguiente manera:
                  └───────────────┘
 
 
-## Características Principales
+ Características Principales
 
 El proyecto cuenta con las siguientes características:
 
@@ -426,7 +390,7 @@ El proyecto cuenta con las siguientes características:
 * Organización modular del código.
 
 
-## Reproducibilidad
+ Reproducibilidad
 
 Para reproducir el proceso en otro equipo se deben seguir los siguientes pasos:
 
@@ -463,7 +427,7 @@ python main.py
 El pipeline realizará nuevamente las etapas de extracción, transformación y carga.
 
 
-## Control de Versiones
+ Control de Versiones
 
 El proyecto utiliza Git para el control de versiones y GitHub como plataforma de almacenamiento del código fuente.
 
@@ -474,7 +438,7 @@ ETL_Proyecto-HospitalMs
 El archivo `.gitignore` permite evitar que archivos generados o de gran tamaño sean incluidos innecesariamente en el repositorio.
 
 
-## Conclusiones
+ Conclusiones
 
 El desarrollo de este proyecto permitió implementar un pipeline ETL completo para el procesamiento de información hospitalaria.
 
@@ -494,9 +458,9 @@ El proyecto demuestra la aplicación práctica de técnicas de:
 El resultado final es una base de datos hospitalaria con 660 registros distribuidos en cinco entidades, lista para ser utilizada en procesos posteriores de consulta, análisis y procesamiento de datos.
 
 
-## Autores
+ Autores
 
 Proyecto académico – ETL
 Programa: Técnico Profesional en Depuración y Procesamiento de Datos para Inteligencia Artificial
-
+por: maileth polo muñoz y maileth polo muñoz
 Asignatura: Extracción, Transformación y Carga de Datos (ETL)
